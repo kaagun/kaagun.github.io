@@ -1,13 +1,18 @@
-// Basic interactivity required by the assignment:
-// 1) theme toggle
-// 2) footer year
-// 3) simple form validation (no backend)
+// Required JS interactivity for the assignment:
+// - Theme toggle
+// - Footer year
+// - Copy email button
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
 const themeBtn = document.getElementById("themeBtn");
 if (themeBtn) {
+  // default theme
+  if (!document.documentElement.hasAttribute("data-theme")) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+
   themeBtn.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme");
     const next = current === "light" ? "dark" : "light";
@@ -16,39 +21,16 @@ if (themeBtn) {
   });
 }
 
-const form = document.getElementById("contactForm");
-const errorEl = document.getElementById("formError");
+const copyBtn = document.getElementById("copyEmailBtn");
+const statusEl = document.getElementById("copyStatus");
 
-if (form && errorEl) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    errorEl.textContent = "";
-
-    const data = new FormData(form);
-    const name = String(data.get("name") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const message = String(data.get("message") || "").trim();
-
-    if (name.length < 2) {
-      errorEl.textContent = "Please enter a valid name (at least 2 characters).";
-      return;
+if (copyBtn && statusEl) {
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("kalkuan03@gmail.com");
+      statusEl.textContent = "Copied to clipboard ✅";
+    } catch {
+      statusEl.textContent = "Could not copy automatically—please copy manually.";
     }
-    if (!email.includes("@") || !email.includes(".")) {
-      errorEl.textContent = "Please enter a valid email address.";
-      return;
-    }
-    if (message.length < 10) {
-      errorEl.textContent = "Message should be at least 10 characters.";
-      return;
-    }
-
-    // No backend required — show success feedback
-    errorEl.style.color = "var(--accent)";
-    errorEl.textContent = "Message validated ✅ (This demo form does not send emails.)";
-    form.reset();
-
-    setTimeout(() => {
-      errorEl.style.color = "";
-    }, 1000);
   });
 }
