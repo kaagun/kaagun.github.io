@@ -10,9 +10,6 @@ function clear(svg) {
   while (svg.firstChild) svg.removeChild(svg.firstChild);
 }
 
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 //bar chart
 function drawBarChart(svg, data, titleText) {
@@ -84,7 +81,6 @@ function drawBarChart(svg, data, titleText) {
     // Filled bar and hover
     const rect = el("rect", {
       x, y, width: barW, height: h,
-      rx: 12,
       fill: "currentColor",
       "fill-opacity": 0.18,
       stroke: "currentColor",

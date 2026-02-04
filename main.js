@@ -1,6 +1,9 @@
 // Interactions
 // - Theme toggle
 
+if (!document.documentElement.hasAttribute("data-theme")) {
+  document.documentElement.setAttribute("data-theme", "dark");
+}
 
 const themeBtn = document.getElementById("themeBtn");
 if (themeBtn) {
