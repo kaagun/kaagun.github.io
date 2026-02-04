@@ -1,7 +1,7 @@
 // Shared interactivity for the site:
 // - Theme toggle (works on any page that has #themeBtn)
 // - Footer year (works on pages that have #year)
-// - Copy email (only on index.html if present)
+
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -22,17 +22,3 @@ if (themeBtn) {
   });
 }
 
-// Copy email button only exists on index.html
-const copyBtn = document.getElementById("copyEmailBtn");
-const statusEl = document.getElementById("copyStatus");
-
-if (copyBtn && statusEl) {
-  copyBtn.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText("kalkuan03@gmail.com");
-      statusEl.textContent = "Copied to clipboard ✅";
-    } catch {
-      statusEl.textContent = "Could not copy automatically—please copy manually.";
-    }
-  });
-}
