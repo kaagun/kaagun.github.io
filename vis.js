@@ -145,13 +145,13 @@ if (chartSvg) {
   drawBarChart(chartSvg, interestsData, "Weekly Interests (approx. hours/week)");
 }
 
-// -------------------- 2) VERY SIMPLE SVG ART --------------------
-function drawSimpleArt(svg) {
+// -------------------- 2) CREATIVE SVG ART: SpongeBob (simple) --------------------
+function drawSpongeBob(svg) {
   clear(svg);
 
   const W = 800, H = 420;
 
-  // 1) border
+  // Background frame
   svg.appendChild(el("rect", {
     x: 16, y: 16, width: W - 32, height: H - 32,
     rx: 18,
@@ -160,46 +160,134 @@ function drawSimpleArt(svg) {
     "stroke-opacity": 0.35
   }));
 
-  // 2) a few random circles
-  const count = 12;
-  for (let i = 0; i < count; i++) {
-    svg.appendChild(el("circle", {
-      cx: randomInt(60, W - 60),
-      cy: randomInt(60, H - 60),
-      r: randomInt(6, 28),
-      fill: "currentColor",
-      "fill-opacity": 0.12,
-      stroke: "currentColor",
-      "stroke-opacity": 0.25
-    }));
-  }
+  // Center the character
+  const g = el("g", { transform: "translate(260, 40)" });
+  svg.appendChild(g);
 
-  // 3) one simple polyline “path”
-  const points = Array.from({ length: 7 }, () => (
-    `${randomInt(60, W - 60)},${randomInt(80, H - 80)}`
-  )).join(" ");
+  // Colors (keep simple + theme-safe)
+  const yellow = "#F6E05E";
+  const brown = "#8B5A2B";
+  const white = "#FFFFFF";
+  const red = "#E53E3E";
+  const blue = "#3182CE";
+  const black = "#111111";
 
-  svg.appendChild(el("polyline", {
-    points,
-    fill: "none",
-    stroke: "currentColor",
-    "stroke-opacity": 0.45,
-    "stroke-width": 2,
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round"
+  // Body (SpongeBob square)
+  g.appendChild(el("rect", {
+    x: 80, y: 20, width: 240, height: 220,
+    rx: 18,
+    fill: yellow,
+    stroke: black,
+    "stroke-width": 3
   }));
 
-  // caption
-  const caption = el("text", { x: 34, y: 54, "font-size": 16, "fill-opacity": 0.9 });
-  caption.textContent = "Simple Generative Doodles";
-  svg.appendChild(caption);
+  // Sponge holes (random-ish but simple)
+  const holes = [
+    { cx: 120, cy: 70, r: 10 },
+    { cx: 170, cy: 55, r: 6 },
+    { cx: 260, cy: 80, r: 12 },
+    { cx: 230, cy: 140, r: 8 },
+    { cx: 140, cy: 150, r: 12 },
+    { cx: 280, cy: 170, r: 7 }
+  ];
+  holes.forEach(h => {
+    g.appendChild(el("circle", {
+      cx: h.cx, cy: h.cy, r: h.r,
+      fill: "rgba(0,0,0,0.08)",
+      stroke: "rgba(0,0,0,0.15)",
+      "stroke-width": 2
+    }));
+  });
+
+  // Eyes (big circles)
+  g.appendChild(el("circle", { cx: 165, cy: 105, r: 40, fill: white, stroke: black, "stroke-width": 3 }));
+  g.appendChild(el("circle", { cx: 235, cy: 105, r: 40, fill: white, stroke: black, "stroke-width": 3 }));
+
+  // Iris + pupil
+  g.appendChild(el("circle", { cx: 165, cy: 110, r: 16, fill: blue, stroke: black, "stroke-width": 2 }));
+  g.appendChild(el("circle", { cx: 235, cy: 110, r: 16, fill: blue, stroke: black, "stroke-width": 2 }));
+  g.appendChild(el("circle", { cx: 165, cy: 112, r: 7, fill: black }));
+  g.appendChild(el("circle", { cx: 235, cy: 112, r: 7, fill: black }));
+
+  // Nose
+  g.appendChild(el("rect", {
+    x: 192, y: 132, width: 16, height: 28,
+    rx: 8,
+    fill: yellow,
+    stroke: black,
+    "stroke-width": 3
+  }));
+
+  // Smile (simple path)
+  g.appendChild(el("path", {
+    d: "M 150 170 C 175 200, 225 200, 250 170",
+    fill: "none",
+    stroke: black,
+    "stroke-width": 4,
+    "stroke-linecap": "round"
+  }));
+
+  // Teeth
+  g.appendChild(el("rect", { x: 186, y: 182, width: 14, height: 18, fill: white, stroke: black, "stroke-width": 2 }));
+  g.appendChild(el("rect", { x: 205, y: 182, width: 14, height: 18, fill: white, stroke: black, "stroke-width": 2 }));
+
+  // Shirt
+  g.appendChild(el("rect", {
+    x: 80, y: 240, width: 240, height: 40,
+    fill: white,
+    stroke: black,
+    "stroke-width": 3
+  }));
+
+  // Tie
+  g.appendChild(el("polygon", {
+    points: "200,250 185,270 200,290 215,270",
+    fill: red,
+    stroke: black,
+    "stroke-width": 2
+  }));
+  g.appendChild(el("polygon", {
+    points: "200,290 188,330 212,330",
+    fill: red,
+    stroke: black,
+    "stroke-width": 2
+  }));
+
+  // Pants
+  g.appendChild(el("rect", {
+    x: 80, y: 280, width: 240, height: 70,
+    fill: brown,
+    stroke: black,
+    "stroke-width": 3
+  }));
+
+  // Belt line
+  g.appendChild(el("line", {
+    x1: 80, y1: 300, x2: 320, y2: 300,
+    stroke: black,
+    "stroke-width": 3,
+    "stroke-opacity": 0.6
+  }));
+
+  // Legs
+  g.appendChild(el("line", { x1: 145, y1: 350, x2: 145, y2: 385, stroke: black, "stroke-width": 4 }));
+  g.appendChild(el("line", { x1: 255, y1: 350, x2: 255, y2: 385, stroke: black, "stroke-width": 4 }));
+
+  // Shoes (simple)
+  g.appendChild(el("ellipse", { cx: 145, cy: 395, rx: 28, ry: 12, fill: black }));
+  g.appendChild(el("ellipse", { cx: 255, cy: 395, rx: 28, ry: 12, fill: black }));
+
+  // Caption
+  const cap = el("text", { x: 34, y: 54, "font-size": 16, fill: "currentColor", "fill-opacity": 0.9 });
+  cap.textContent = "Simple SVG character (generated with JS)";
+  svg.appendChild(cap);
 }
 
 const artSvg = document.getElementById("artSvg");
 const regenBtn = document.getElementById("regen");
 
 function regenArt() {
-  if (artSvg) drawSimpleArt(artSvg);
+  if (artSvg) drawSpongeBob(artSvg);
 }
 
 if (regenBtn) regenBtn.addEventListener("click", regenArt);
