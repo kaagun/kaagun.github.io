@@ -14,7 +14,7 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// -------------------- 1) BAR CHART (personal, one dataset) --------------------
+//bar chart
 function drawBarChart(svg, data, titleText) {
   clear(svg);
 
@@ -23,15 +23,20 @@ function drawBarChart(svg, data, titleText) {
   const innerW = W - padding.left - padding.right;
   const innerH = H - padding.top - padding.bottom;
 
-  const maxValue = 8; // adjust if you want a larger range
+  const maxValue = 8; 
   const ticks = [0, 2, 4, 6, 8];
 
-  // Title
-  const title = el("text", { x: padding.left, y: 30, "font-size": 18 });
+  // title
+  const title = el("text", {
+  x: padding.left,
+  y: 30,
+  "font-size": 18,
+  fill: "#6ee7ff"
+});
   title.textContent = titleText;
   svg.appendChild(title);
 
-  // Axes
+  // axes
   svg.appendChild(el("line", {
     x1: padding.left, y1: padding.top + innerH,
     x2: padding.left + innerW, y2: padding.top + innerH,
@@ -43,7 +48,7 @@ function drawBarChart(svg, data, titleText) {
     stroke: "currentColor", "stroke-opacity": 0.35
   }));
 
-  // Grid + y labels
+  // grid and y labels
   ticks.forEach((v) => {
     const y = padding.top + innerH - (v / maxValue) * innerH;
 
@@ -73,10 +78,10 @@ function drawBarChart(svg, data, titleText) {
     const h = (d.value / maxValue) * innerH;
     const y = padding.top + (innerH - h);
 
-    // Group for each bar
+    // group for each bar
     const g = el("g");
 
-    // Filled bar (hover anywhere inside)
+    // Filled bar and hover
     const rect = el("rect", {
       x, y, width: barW, height: h,
       rx: 12,
@@ -86,12 +91,12 @@ function drawBarChart(svg, data, titleText) {
       "stroke-opacity": 0.55
     });
 
-    // Tooltip (native)
+    // tooltip 
     const tip = el("title");
     tip.textContent = `${d.label}: ${d.value}h/week`;
     rect.appendChild(tip);
 
-    // Value label (appears on hover)
+    // labelling when hovered
     const valueText = el("text", {
       x: x + barW / 2,
       y: y - 8,
@@ -117,7 +122,7 @@ function drawBarChart(svg, data, titleText) {
     g.appendChild(valueText);
     svg.appendChild(g);
 
-    // X label
+    // X 
     const t = el("text", {
       x: x + barW / 2,
       y: padding.top + innerH + 28,
@@ -133,7 +138,6 @@ function drawBarChart(svg, data, titleText) {
 
 const chartSvg = document.getElementById("chart");
 if (chartSvg) {
-  // Edit these numbers to match your real-ish weekly time
   const interestsData = [
     { label: "Badminton", value: 4 },
     { label: "Cafés", value: 2 },
@@ -142,10 +146,10 @@ if (chartSvg) {
     { label: "Friends", value: 4 }
   ];
 
-  drawBarChart(chartSvg, interestsData, "Weekly Interests (approx. hours/week)");
+  drawBarChart(chartSvg, interestsData, "Weekly Interests (hours/week)");
 }
 
-// -------------------- 2) CREATIVE SVG ART: SpongeBob (simple) --------------------
+// SPONGEBOB
 function drawSpongeBob(svg) {
   clear(svg);
 
@@ -160,11 +164,11 @@ function drawSpongeBob(svg) {
     "stroke-opacity": 0.35
   }));
 
-  // Center the character
+  // Center
   const g = el("g", { transform: "translate(260, 40)" });
   svg.appendChild(g);
 
-  // Colors (keep simple + theme-safe)
+  // Colors
   const yellow = "#F6E05E";
   const brown = "#8B5A2B";
   const white = "#FFFFFF";
@@ -172,7 +176,7 @@ function drawSpongeBob(svg) {
   const blue = "#3182CE";
   const black = "#111111";
 
-  // Body (SpongeBob square)
+  // Body
   g.appendChild(el("rect", {
     x: 80, y: 20, width: 240, height: 220,
     fill: yellow,
@@ -180,7 +184,7 @@ function drawSpongeBob(svg) {
     "stroke-width": 3
   }));
 
-  // Sponge holes (random-ish but simple)
+  // Holes
   const holes = [
     { cx: 120, cy: 70, r: 10 },
     { cx: 170, cy: 55, r: 6 },
@@ -198,11 +202,11 @@ function drawSpongeBob(svg) {
     }));
   });
 
-  // Eyes (big circles)
+  // Eyes 
   g.appendChild(el("circle", { cx: 165, cy: 105, r: 40, fill: white, stroke: black, "stroke-width": 3 }));
   g.appendChild(el("circle", { cx: 235, cy: 105, r: 40, fill: white, stroke: black, "stroke-width": 3 }));
 
-  // Iris + pupil
+  // Pupils
   g.appendChild(el("circle", { cx: 165, cy: 110, r: 16, fill: blue, stroke: black, "stroke-width": 2 }));
   g.appendChild(el("circle", { cx: 235, cy: 110, r: 16, fill: blue, stroke: black, "stroke-width": 2 }));
   g.appendChild(el("circle", { cx: 165, cy: 112, r: 7, fill: black }));
@@ -217,7 +221,7 @@ function drawSpongeBob(svg) {
     "stroke-width": 3
   }));
 
-  // Smile (simple path)
+  // Smile 
   g.appendChild(el("path", {
     d: "M 150 170 C 175 200, 225 200, 250 170",
     fill: "none",
@@ -260,7 +264,7 @@ function drawSpongeBob(svg) {
     "stroke-width": 3
   }));
 
-  // Belt line
+  // Belt
   g.appendChild(el("line", {
     x1: 80, y1: 300, x2: 320, y2: 300,
     stroke: black,
@@ -272,7 +276,7 @@ function drawSpongeBob(svg) {
   g.appendChild(el("line", { x1: 145, y1: 350, x2: 145, y2: 385, stroke: black, "stroke-width": 4 }));
   g.appendChild(el("line", { x1: 255, y1: 350, x2: 255, y2: 385, stroke: black, "stroke-width": 4 }));
 
-  // Shoes (simple)
+  // Shoes 
   g.appendChild(el("ellipse", { cx: 145, cy: 395, rx: 28, ry: 12, fill: black }));
   g.appendChild(el("ellipse", { cx: 255, cy: 395, rx: 28, ry: 12, fill: black }));
 

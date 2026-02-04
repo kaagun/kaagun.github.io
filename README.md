@@ -1,22 +1,20 @@
 # Personal Website (Assignment 2)
 
-This is my personal website and SVG visualization portfolio for Assignment 2.
+This is my personal/portfolio website used for Assignment 2 of IAT355.
 
 ## Pages
-- **index.html**: Homepage with resume-style content (about, education, skills, projects, contact).
-- **visualizations.html**: SVG visualization portfolio page.
+- **index.html**: Homepage that includes about me, education, skills, projects, contact.
+- **visualizations.html**: SVG visualizations
 
 ## Technologies
-- HTML (semantic structure)
-- CSS (responsive layout using flexible units)
+- HTML
+- CSS (responsive layout)
 - JavaScript
-  - **main.js**: theme toggle + basic form validation
-  - **vis.js**: generates SVG visualization and creative SVG art
+  - **main.js**: theme toggle
+  - **vis.js**: to generate SVG visualization and creative SVG art
 
 ## How to Navigate
 Use the top navigation bar on each page:
-- Home → index.html
-- Visualizations → visualizations.html
+- Home goes to index.html
+- Visualizations goes to visualizations.html
 
-## Notes
-This project uses GitHub Pages for hosting.
