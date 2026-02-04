@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name | Personal Website</title>
+  <meta name="description" content="Personal website and visualization portfolio." />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <p class="site-title">Your Name</p>
+        <p class="site-subtitle">SIAT Student • Visual Analytics • Design + Dev</p>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="visualizations.html">Visualizations</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn" id="themeBtn" type="button" aria-pressed="false">
+        Toggle theme
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section container" id="about">
+      <h1>Hi, I’m Your Name 👋</h1>
+      <p>
+        I’m a student at SFU (SIAT) interested in interaction design, front-end development,
+        and data visualization. This site is a mini portfolio with resume-style content and
+        an SVG visualization page.
+      </p>
+
+      <div class="card">
+        <h2>Quick links</h2>
+        <ul>
+          <li><a href="visualizations.html">Go to my visualization portfolio</a></li>
+          <li><a href="https://github.com/YourUsername" target="_blank" rel="noreferrer">My GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noreferrer">My LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section container" id="education">
+      <h2>Education</h2>
+      <ul class="timeline">
+        <li>
+          <h3>Simon Fraser University — SIAT</h3>
+          <p class="muted">B.A./B.Sc. (your program) • Expected: 20XX</p>
+          <p>Relevant courses: Visual Analytics (IAT 355), HCI, Interaction Design, etc.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section container" id="skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Design</h3>
+          <ul>
+            <li>Figma</li>
+            <li>Typography / Layout</li>
+            <li>Wireflows / Prototyping</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Development</h3>
+          <ul>
+            <li>HTML / CSS</li>
+            <li>JavaScript</li>
+            <li>Git / GitHub</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Data / Viz</h3>
+          <ul>
+            <li>SVG</li>
+            <li>Tableau (optional)</li>
+            <li>Visual encodings</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="projects">
+      <h2>Experience / Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Project Title</h3>
+          <p class="muted">Role • Year</p>
+          <p>A short description of what you built and what tools you used.</p>
+        </article>
+
+        <article class="card">
+          <h3>Another Project</h3>
+          <p class="muted">Role • Year</p>
+          <p>What problem you solved + 1–2 measurable outcomes (if possible).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="contact">
+      <h2>Contact</h2>
+      <p>Use this form (simple JS validation) or email me directly.</p>
+
+      <form class="card form" id="contactForm" novalidate>
+        <label>
+          Name
+          <input name="name" type="text" required minlength="2" />
+        </label>
+
+        <label>
+          Email
+          <input name="email" type="email" required />
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" rows="4" required minlength="10"></textarea>
+        </label>
+
+        <p class="error" id="formError" aria-live="polite"></p>
+
+        <button class="btn" type="submit">Send</button>
+      </form>
+
+      <p class="muted small">
+        Email: <a href="mailto:you@example.com">you@example.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted small">© <span id="year"></span> Your Name</p>
+    </div>
+  </footer>
+</body>
+</html>

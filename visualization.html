@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name | Visualizations</title>
+  <meta name="description" content="SVG visualization portfolio." />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="vis.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <p class="site-title">Visualizations</p>
+        <p class="site-subtitle">SVG created with JavaScript</p>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#viz">SVG Visualization</a></li>
+          <li><a href="#art">Creative SVG Art</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section container" id="viz">
+      <h1>SVG Visualization</h1>
+      <p class="muted">
+        A simple bar chart showing a “skill confidence” score (example data).
+        Built in <code>vis.js</code> using SVG elements created with JavaScript.
+      </p>
+
+      <div class="card">
+        <svg id="chart" viewBox="0 0 800 420" role="img" aria-label="Bar chart of skill confidence"></svg>
+        <p class="muted small">Tip: Hover a bar to see the value.</p>
+      </div>
+    </section>
+
+    <section class="section container" id="art">
+      <h2>Creative SVG Art</h2>
+      <p class="muted">
+        Generative SVG art made with JavaScript. Click to regenerate.
+      </p>
+
+      <div class="card">
+        <button class="btn" id="regen" type="button">Regenerate</button>
+        <div style="height: 0.75rem;"></div>
+        <svg id="artSvg" viewBox="0 0 800 420" role="img" aria-label="Generative SVG art"></svg>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted small"><a href="index.html">← Back to Home</a></p>
+    </div>
+  </footer>
+</body>
+</html>
