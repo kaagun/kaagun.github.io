@@ -1,18 +1,19 @@
-// Required JS interactivity for the assignment:
-// - Theme toggle
-// - Footer year
-// - Copy email button
+// Shared interactivity for the site:
+// - Theme toggle (works on any page that has #themeBtn)
+// - Footer year (works on pages that have #year)
+// - Copy email (only on index.html if present)
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
 const themeBtn = document.getElementById("themeBtn");
-if (themeBtn) {
-  // default theme
-  if (!document.documentElement.hasAttribute("data-theme")) {
-    document.documentElement.setAttribute("data-theme", "dark");
-  }
 
+// default theme if none set
+if (!document.documentElement.hasAttribute("data-theme")) {
+  document.documentElement.setAttribute("data-theme", "dark");
+}
+
+if (themeBtn) {
   themeBtn.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme");
     const next = current === "light" ? "dark" : "light";
@@ -21,6 +22,7 @@ if (themeBtn) {
   });
 }
 
+// Copy email button only exists on index.html
 const copyBtn = document.getElementById("copyEmailBtn");
 const statusEl = document.getElementById("copyStatus");
 

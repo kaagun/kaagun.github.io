@@ -3,13 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name | Visualizations</title>
-  <meta name="description" content="SVG visualization portfolio." />
+  <title>Kuan | Visualizations</title>
+  <meta name="description" content="SVG visualization portfolio by Kuan." />
   <link rel="stylesheet" href="style.css" />
+  <script defer src="main.js"></script>
   <script defer src="vis.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="container header-inner">
       <div>
@@ -20,37 +23,39 @@
       <nav aria-label="Primary">
         <ul class="nav">
           <li><a href="index.html">Home</a></li>
-          <li><a href="#viz">SVG Visualization</a></li>
-          <li><a href="#art">Creative SVG Art</a></li>
+          <li><a href="#viz">Bar Chart</a></li>
+          <li><a href="#art">SVG Art</a></li>
         </ul>
       </nav>
+
+      <button class="btn" id="themeBtn" type="button" aria-pressed="false">
+        Toggle theme
+      </button>
     </div>
   </header>
 
   <main id="main">
     <section class="section container" id="viz">
-      <h1>SVG Visualization</h1>
+      <h1>Bar Chart</h1>
       <p class="muted">
-        A simple bar chart showing a “skill confidence” score (example data).
-        Built in <code>vis.js</code> using SVG elements created with JavaScript.
+        A simple bar chart showing how I spend time on my interests (approx. hours per week).
+        Built in <code>vis.js</code> by generating SVG elements with JavaScript.
       </p>
 
       <div class="card">
-        <svg id="chart" viewBox="0 0 800 420" role="img" aria-label="Bar chart of skill confidence"></svg>
-        <p class="muted small">Tip: Hover a bar to see the value.</p>
+        <svg id="chart" viewBox="0 0 800 420" role="img" aria-label="Bar chart of weekly interests"></svg>
+        <p class="muted small">Hover a bar to see its value.</p>
       </div>
     </section>
 
     <section class="section container" id="art">
-      <h2>Creative SVG Art</h2>
-      <p class="muted">
-        Generative SVG art made with JavaScript. Click to regenerate.
-      </p>
+      <h2>Simple SVG Art</h2>
+      <p class="muted">Minimal generative SVG. Click to regenerate.</p>
 
       <div class="card">
         <button class="btn" id="regen" type="button">Regenerate</button>
         <div style="height: 0.75rem;"></div>
-        <svg id="artSvg" viewBox="0 0 800 420" role="img" aria-label="Generative SVG art"></svg>
+        <svg id="artSvg" viewBox="0 0 800 420" role="img" aria-label="Simple generative SVG art"></svg>
       </div>
     </section>
   </main>
