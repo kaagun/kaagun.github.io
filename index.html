@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name | Personal Website</title>
-  <meta name="description" content="Personal website and visualization portfolio." />
+  <title>Kuan | Personal Website</title>
+  <meta name="description" content="Kuan — Interactive Arts & Technology student portfolio site." />
   <link rel="stylesheet" href="style.css" />
   <script defer src="main.js"></script>
 </head>
@@ -15,16 +15,16 @@
   <header class="site-header">
     <div class="container header-inner">
       <div>
-        <p class="site-title">Your Name</p>
-        <p class="site-subtitle">SIAT Student • Visual Analytics • Design + Dev</p>
+        <p class="site-title">Kuan</p>
+        <p class="site-subtitle">Interactive Arts & Technology (SFU) • Design + Visual Analytics</p>
       </div>
 
       <nav aria-label="Primary">
         <ul class="nav">
           <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#gallery">Images</a></li>
           <li><a href="visualizations.html">Visualizations</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -37,116 +37,153 @@
   </header>
 
   <main id="main">
+    <!-- ABOUT -->
     <section class="section container" id="about">
-      <h1>Hi, I’m Your Name 👋</h1>
+      <h1>Hi, I’m Kuan 👋</h1>
       <p>
-        I’m a student at SFU (SIAT) interested in interaction design, front-end development,
-        and data visualization. This site is a mini portfolio with resume-style content and
-        an SVG visualization page.
+        I’m a 3rd-year Interactive Arts & Technology student at Simon Fraser University.
+        I’m interested in design and building clean, usable interfaces. Outside of school,
+        I like badminton, café hopping, cooking, and going out with friends for good food.
       </p>
 
-      <div class="card">
-        <h2>Quick links</h2>
-        <ul>
-          <li><a href="visualizations.html">Go to my visualization portfolio</a></li>
-          <li><a href="https://github.com/kaagun" target="_blank" rel="noreferrer">My GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/kal-kuan-chia-1a25242b8/" target="_blank" rel="noreferrer">My LinkedIn</a></li>
-        </ul>
+      <div class="grid">
+        <article class="card" aria-label="Education">
+          <h2>Education</h2>
+          <ul>
+            <li><strong>Simon Fraser University (SFU)</strong> — Interactive Arts & Technology (3rd year)</li>
+            <li><strong>PTEB</strong> — A Levels</li>
+            <li><strong>Chung Ching Middle School</strong> — High school</li>
+          </ul>
+        </article>
+
+        <article class="card" aria-label="Links">
+          <h2>Links</h2>
+          <ul>
+            <li><a href="visualizations.html">Visualization portfolio</a></li>
+            <li><a href="https://github.com/kaagun" target="_blank" rel="noreferrer">GitHub: @kaagun</a></li>
+            <li><a href="https://www.linkedin.com/in/kal-kuan-chia-1a25242b8/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section class="section container" id="education">
-      <h2>Education</h2>
-      <ul class="timeline">
-        <li>
-          <h3>Simon Fraser University — SIAT</h3>
-          <p class="muted">B.A./B.Sc. (your program) • Expected: 20XX</p>
-          <p>Relevant courses: Visual Analytics (IAT 355), HCI, Interaction Design, etc.</p>
-        </li>
-      </ul>
-    </section>
-
+    <!-- SKILLS -->
     <section class="section container" id="skills">
       <h2>Skills</h2>
+
       <div class="grid">
-        <div class="card">
+        <article class="card">
           <h3>Design</h3>
           <ul>
             <li>Figma</li>
             <li>Typography / Layout</li>
             <li>Wireflows / Prototyping</li>
           </ul>
-        </div>
-        <div class="card">
-          <h3>Development</h3>
+        </article>
+
+        <article class="card">
+          <h3>Tools</h3>
           <ul>
-            <li>HTML / CSS</li>
-            <li>JavaScript</li>
-            <li>Git / GitHub</li>
+            <li>Microsoft 365 (Teams, PowerPoint, Word, Excel, Outlook)</li>
+            <li>Adobe Suite (Photoshop, Lightroom, InDesign, Illustrator)</li>
           </ul>
-        </div>
-        <div class="card">
-          <h3>Data / Viz</h3>
+        </article>
+
+        <article class="card">
+          <h3>Programming</h3>
           <ul>
-            <li>SVG</li>
-            <li>Tableau (optional)</li>
-            <li>Visual encodings</li>
+            <li>Java (basic)</li>
+            <li>Python (basic)</li>
+            <li>HTML / CSS / JavaScript (learning)</li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section class="section container" id="projects">
-      <h2>Experience / Projects</h2>
+    <!-- EXPERIENCE -->
+    <section class="section container" id="experience">
+      <h2>Experience</h2>
+
       <div class="grid">
         <article class="card">
-          <h3>Project Title</h3>
-          <p class="muted">Role • Year</p>
-          <p>A short description of what you built and what tools you used.</p>
+          <h3>Marketing Director — Canadianized Asian Club (CAC)</h3>
+          <p class="muted">SFU • Student organization</p>
+          <p>Brand/marketing direction, event promotions, and design assets.</p>
         </article>
 
         <article class="card">
-          <h3>Another Project</h3>
-          <p class="muted">Role • Year</p>
-          <p>What problem you solved + 1–2 measurable outcomes (if possible).</p>
+          <h3>Marketing Design Coordinator — SFU Red Leafs Badminton</h3>
+          <p class="muted">SFU • Athletics</p>
+          <p>Social graphics and promotional materials for club events and updates.</p>
+        </article>
+
+        <article class="card">
+          <h3>Marketing Design Coordinator — Axis Consulting</h3>
+          <p class="muted">SFU • Consulting club</p>
+          <p>Design support for marketing communications and outreach materials.</p>
+        </article>
+
+        <article class="card">
+          <h3>Tea Barista — Matcha Tea Lab</h3>
+          <p class="muted">Current</p>
+          <p>Customer service, drink preparation, and working efficiently during rush periods.</p>
         </article>
       </div>
     </section>
 
+    <!-- IMAGES -->
+    <section class="section container" id="gallery">
+      <h2>Images</h2>
+      <p class="muted">A few photos that represent me and my work (add your own images here).</p>
+
+      <div class="grid">
+        <figure class="card">
+          <img src="assets/me.jpg" alt="A photo of Kuan" style="width:100%; height:auto; border-radius: 12px;">
+          <figcaption class="muted small">About me</figcaption>
+        </figure>
+
+        <figure class="card">
+          <img src="assets/work-1.jpg" alt="A design or project screenshot by Kuan" style="width:100%; height:auto; border-radius: 12px;">
+          <figcaption class="muted small">Design / project sample</figcaption>
+        </figure>
+
+        <figure class="card">
+          <img src="assets/work-2.jpg" alt="Another design or project screenshot by Kuan" style="width:100%; height:auto; border-radius: 12px;">
+          <figcaption class="muted small">Another sample</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section class="section container" id="contact">
       <h2>Contact</h2>
-      <p>Use this form (simple JS validation) or email me directly.</p>
+      <div class="card">
+        <p>
+          Email:
+          <a id="emailLink" href="mailto:kalkuan03@gmail.com">kalkuan03@gmail.com</a>
+          <button class="btn" id="copyEmailBtn" type="button">Copy email</button>
+        </p>
 
-      <form class="card form" id="contactForm" novalidate>
-        <label>
-          Name
-          <input name="name" type="text" required minlength="2" />
-        </label>
+        <p>
+          LinkedIn:
+          <a href="https://www.linkedin.com/in/kal-kuan-chia-1a25242b8/" target="_blank" rel="noreferrer">
+            kal-kuan-chia
+          </a>
+        </p>
 
-        <label>
-          Email
-          <input name="email" type="email" required />
-        </label>
+        <p>
+          GitHub:
+          <a href="https://github.com/kaagun" target="_blank" rel="noreferrer">@kaagun</a>
+        </p>
 
-        <label>
-          Message
-          <textarea name="message" rows="4" required minlength="10"></textarea>
-        </label>
-
-        <p class="error" id="formError" aria-live="polite"></p>
-
-        <button class="btn" type="submit">Send</button>
-      </form>
-
-      <p class="muted small">
-        Email: <a href="mailto:you@example.com">you@example.com</a>
-      </p>
+        <p class="muted small" id="copyStatus" aria-live="polite"></p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p class="muted small">© <span id="year"></span> Your Name</p>
+      <p class="muted small">© <span id="year"></span> Kuan • Hosted at <span class="muted">kaagun.github.io</span></p>
     </div>
   </footer>
 </body>
