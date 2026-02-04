@@ -175,7 +175,6 @@ function drawSpongeBob(svg) {
   // Body (SpongeBob square)
   g.appendChild(el("rect", {
     x: 80, y: 20, width: 240, height: 220,
-    rx: 18,
     fill: yellow,
     stroke: black,
     "stroke-width": 3
@@ -279,16 +278,12 @@ function drawSpongeBob(svg) {
 
   // Caption
   const cap = el("text", { x: 34, y: 54, "font-size": 16, fill: "currentColor", "fill-opacity": 0.9 });
-  cap.textContent = "Simple SVG character (generated with JS)";
+  cap.textContent = "Spongebob";
   svg.appendChild(cap);
 }
 
 const artSvg = document.getElementById("artSvg");
-const regenBtn = document.getElementById("regen");
 
-function regenArt() {
-  if (artSvg) drawSpongeBob(artSvg);
+if (artSvg) {
+  drawSpongeBob(artSvg);
 }
-
-if (regenBtn) regenBtn.addEventListener("click", regenArt);
-regenArt();
