@@ -1,4 +1,5 @@
 // Load data from datasets/videogames_wide.csv using d3.csv and then make visualizations
+console.log("vis.js loaded");
 async function fetchData() {
   // autoType converts year/global_sales/sales_amount to numbers
   return await d3.csv("./dataset/videogames_long.csv", d3.autoType);
@@ -65,7 +66,7 @@ fetchData().then(async (data) => {
         },
       ],
     },
-    width: "container",
+    width: 800,
     height: 350,
   };
 
@@ -98,7 +99,7 @@ fetchData().then(async (data) => {
         },
       ],
     },
-    width: "container",
+    width: 800,
     height: 350,
   };
 
@@ -128,7 +129,7 @@ fetchData().then(async (data) => {
         },
       ],
     },
-    width: "container",
+    width: 800,
     height: 350,
   };
 
@@ -160,7 +161,7 @@ fetchData().then(async (data) => {
         },
       ],
     },
-    width: "container",
+    width: 800,
     height: 350,
   };
 
@@ -193,7 +194,7 @@ fetchData().then(async (data) => {
         },
       ],
     },
-    width: "container",
+    width: 800,
     height: 350,
   };
 
@@ -311,7 +312,7 @@ fetchData().then(async (data) => {
         { field: "jp_sales_total", type: "quantitative", title: "JP Total" },
       ],
     },
-    width: "container",
+    width: 800,
     height: 350,
   };
 
@@ -327,6 +328,15 @@ fetchData().then(async (data) => {
 });
 
 async function render(viewID, spec) {
-  const result = await vegaEmbed(viewID, spec, { actions: false });
-  result.view.run();
+  try {
+    const el = document.querySelector(viewID);
+    if (!el) {
+      console.warn("Missing container:", viewID);
+      return;
+    }
+    const result = await vegaEmbed(viewID, spec, { actions: false });
+    result.view.run();
+  } catch (err) {
+    console.error("Failed to render", viewID, err);
+  }
 }
