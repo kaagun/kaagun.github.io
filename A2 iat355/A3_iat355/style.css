@@ -1,0 +1,70 @@
+body {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  background-color: #f7f7f7;
+}
+
+.container {
+  width: 70%;
+  max-width: 1100px;
+  padding: 40px 0;
+}
+
+/* Section spacing */
+h2 {
+  margin-top: 60px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+p {
+  margin-top: 15px;
+  margin-bottom: 40px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Chart containers */
+#view1a,
+#view1b,
+#view2a,
+#view2b,
+#view3a,
+#view3b,
+#view4a,
+#view4b {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 20px;
+}
+
+
+h1 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #eaeaea;
+}
+
+ul {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      const options = {
+        config: {
+          // Vega-Lite default configuration
+        },
+        init: (view) => {
+          view.tooltip(new vegaTooltip.Handler().call);
+        },
+        view: {
+          loader: vega.loader({
+            baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
+          }),
+          renderer: "canvas",
+        },
+      };
+
+      vl.register(vega, vegaLite, options);
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- ================= Section 1: Describe the Data ================= -->
+
+      <h1>Section 1: Describe the Data</h1>
+
+      <h3>Dataset Variables</h3>
+
+      <table class="data-table">
+        <tr>
+          <th>Variable</th>
+          <th>Data Type</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>Categorical (Nominal)</td>
+          <td>Title of the video game</td>
+        </tr>
+        <tr>
+          <td>platform</td>
+          <td>Categorical (Nominal)</td>
+          <td>Console/platform where the game was released</td>
+        </tr>
+        <tr>
+          <td>year</td>
+          <td>Quantitative</td>
+          <td>Year of release</td>
+        </tr>
+        <tr>
+          <td>genre</td>
+          <td>Categorical (Nominal)</td>
+          <td>Game genre category</td>
+        </tr>
+        <tr>
+          <td>publisher</td>
+          <td>Categorical (Nominal)</td>
+          <td>Publishing company</td>
+        </tr>
+        <tr>
+          <td>global_sales</td>
+          <td>Quantitative</td>
+          <td>Total global sales (in millions)</td>
+        </tr>
+        <tr>
+          <td>sales_region</td>
+          <td>Categorical (Nominal)</td>
+          <td>Region of sale (NA, EU, JP, Other)</td>
+        </tr>
+        <tr>
+          <td>sales_amount</td>
+          <td>Quantitative</td>
+          <td>Sales amount in that specific region (millions)</td>
+        </tr>
+      </table>
+
+      <h3>Summarized Insights</h3>
+
+      <h4>Central Tendency</h4>
+      <ul>
+        <li><strong>Mean:</strong> 0.54 million units</li>
+        <li><strong>Median:</strong> 0.17 million units</li>
+        <li><strong>Mode:</strong> 0.02 million units</li>
+      </ul>
+
+      <h4>Spread / Variability</h4>
+      <ul>
+        <li><strong>Minimum sales:</strong> 0.01 million units</li>
+        <li><strong>Maximum sales:</strong> 82.74 million units</li>
+        <li><strong>Range:</strong> 82.73 million units</li>
+        <li><strong>Standard Deviation:</strong> 1.57 million units</li>
+      </ul>
+
+      <h4>Categorical Insights</h4>
+      <ul>
+        <li><strong>Most frequent genre:</strong> Action</li>
+        <li><strong>Most popular platform:</strong> DS</li>
+        <li><strong>Peak sales year:</strong> 2008</li>
+        <li><strong>Total global sales in peak year:</strong> 678.9 million units</li>
+      </ul>
+
+      <p>
+        Based on these findings from the dataset, most games sold modestly while some dominated total revenue.
+        Historically, action genres have been the most successful category and it showed. Besides that,
+        the peak in 2008 could suggest that there was a huge leap in console technology during that period.
+      </p>
+
+      <!-- Visualization 1A -->
+      <h2>Visualization 1A: Which platforms have the highest total global sales across all games?</h2>
+      <div id="view1a"></div>
+      <p>
+        <strong>Reflection for Visualization 1A:</strong>
+        PS2 tops the total global sales, followed by X360, PS3, Wii, and Ds. This could suggest that
+        platforms with large install bases and long lifespans accumulate more sales.
+      </p>
+
+     <p><strong>Design Choice:</strong> 
+        A horizontal bar chart is one of the clearest ways to compare totals across categories. 
+        Since platforms are nominal categories, bars allow easy visual comparison of length to 
+        represent magnitude. Sorting the bars in descending order highlights which platforms
+        dominate global sales immediately. Using a horizontal layout improves readability because
+        platform names are easier to read on the y-axis than rotated vertically.
+      
+      </p>
+
+      <!-- Visualization 1B -->
+      <h2>Visualization 1B: For the top-selling platforms, which genres contribute the most to total global sales?</h2>
+      <div id="view1b"></div>
+      <p>
+        <strong>Reflection for Visualization 1B:</strong>
+        Action and Sports tend to appear strongly across multiple major platforms, indicating broad cross-platform
+        appeal. The pairings with darker cells suggest that certain genres are especially successful on specific consoles.
+    
+      </p>
+
+      <p><strong>Design Choice:</strong> 
+        I selected a heatmap because it allows two categorical variables (platform and genre) 
+        to be compared simultaneously while encoding sales magnitude through color intensity. 
+        This makes it easier to spot strong platform and genre combinations without scanning 
+        multiple separate charts. The color gradient was chosen to emphasize higher sales with
+        darker tones, making patterns stand out visually. A heatmap is especially effective when 
+        exploring relationships between two categorical dimensions.
+      
+      </p>
+
+
+      <!-- Visualization 2A -->
+      <h2>Visualization 2A: How have total global video game sales changed over time?</h2>
+      <div id="view2a"></div>
+      <p>
+        <strong>Reflection for Visualization 2A:</strong>
+        Global sales rose sharply from the mid-1990s, peaked around the late 2000s, then declined after the early 2010s.
+        New consoles being introduced could be the cause of this pattern.
+      </p>
+
+       <p><strong>Design Choice:</strong> 
+        A line chart was used because the primary variable of interest (year) is temporal. Line charts effectively 
+        show trends and changes over time, making the rise and decline of global sales clearly visible. The continuous 
+        line emphasizes the overall trajectory of the gaming industry, especially the rapid growth 
+        and eventual decline after the peak. This format makes it easy to identify turning points 
+        such as the late 2000s peak.
+      
+      </p>
+
+      <!-- Visualization 2B -->
+      <h2>Visualization 2B: How do sales over time differ for the top platforms, and when did each platform peak?</h2>
+      <div id="view2b"></div>
+      <p>
+        <strong>Reflection for Visualization 2B:</strong>
+        Each platform shows a distinct lifespan curve, rising to a peak then dropping off, which matches how consoles gain
+        and lose popularity over time. The peaks for Wii/DS cluster around the late 2000s, while other platforms peak slightly
+        earlier or later. 
+      </p>
+
+      <p><strong>Design Choice:</strong> 
+        To compare multiple platforms over time, I used a multi-line chart. This allows each platform’s sales trend to be displayed simultaneously 
+        while maintaining clarity through color differentiation. This design makes it easy to observe lifecycle patterns where each platform rises 
+        to a peak and then declines. Using separate colored lines helps show competition and overlap between platforms during similar time periods.
+      
+      </p>
+
+      <!-- Visualization 3A -->
+      <h2>Visualization 3A: How do total sales differ across regions (NA, EU, JP, and Other) for the top platforms?</h2>
+      <div id="view3a"></div>
+      <p>
+        <strong>Reflection for Visualization 3A:</strong>
+        North America and Europe contribute the largest shares for most top platforms, while Japan contributes a smaller portion
+        overall except for certain consoles. 
+      </p>
+
+      <p><strong>Design Choice:</strong> 
+        I chose a stacked bar chart because it effectively shows how regional sales contribute to each platform’s total sales. 
+        The stacked format allows viewers to see both the overall magnitude and the proportional contribution of each region at 
+        the same time. Using color to differentiate regions improves clarity and comparison across platforms. This design makes 
+        it easier to understand how global success is distributed geographically.
+      
+      </p>
+
+      <!-- Visualization 3B -->
+      <h2>Visualization 3B: Which platforms are more popular in North America vs Japan?</h2>
+      <div id="view3b"></div>
+      <p>
+        <strong>Reflection for Visualization 3B:</strong>
+        The ranking differs noticeable between regions where some platforms perform strongly in North America but not as strongly
+        in Japan, and vice versa. This could be the result of differences in available game options or cultural gaming tastes.
+      </p>
+
+      <p><strong>Design Choice:</strong> 
+        I used faceted bar charts to compare two regions side-by-side. Instead of stacking or overlaying, faceting keeps the regions visually 
+        separated, reducing clutter and making differences clearer. This design choice allows viewers to directly compare platform rankings 
+        across regions without confusion. It highlights how popularity shifts depending on location.
+      
+      </p>
+
+      <!-- Visualization 4A -->
+      <h2>Visualization 4A: Which genres sell the most in Japan compared to North America?</h2>
+      <div id="view4a"></div>
+      <p>
+        <strong>Reflection for Visualization 4A:</strong>
+        Genre popularity differs by region where Japan shows a strong preference for Role–Playing compared to North America,
+        where they love Action and Sports with much higher totals.
+      </p>
+
+      <p><strong>Design Choice:</strong> 
+        For this comparison, I again used faceted bar charts to clearly contrast genre preferences across two regions. 
+        This layout emphasizes differences in ranking rather than overall totals alone. Bar charts 
+        are appropriate here because genre is categorical and the goal is to compare magnitudes.
+      
+      </p>
+
+      <!-- Visualization 4B -->
+      <h2>Visualization 4B: Are there genres that are much stronger in one region than the other (Japan vs North America)?</h2>
+      <div id="view4b"></div>
+      <p>
+        <strong>Reflection for Visualization 4B:</strong>
+        There are some points that are far from the rest which can indicate genres that are much stronger in one region than the other.
+        Role-Playing sits noticeably higher compared to North America’s total on the same genre, which shows Japan’s stronger preference
+        for that genre. 
+      </p>
+
+      <p><strong>Design Choice:</strong> 
+        A scatterplot was selected to show the relationship between two quantitative variables simultaneously 
+        (total NA sales and total JP sales per genre). Unlike bar charts, this format reveals relative balance 
+        or imbalance between regions. Points that fall far from the diagonal indicate genres that are disproportionately 
+        stronger in one region. The scatterplot allows quick identification of outliers, such as Role-Playing being stronger 
+        in Japan relative to North America.
+      
+      </p>
+    </div>
+
+    <script type="module" src="vis.js"></script>
+  </body>
+</html>
