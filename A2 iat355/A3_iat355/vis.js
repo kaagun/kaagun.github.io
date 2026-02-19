@@ -1,12 +1,12 @@
-// Load data from datasets/videogames_wide.csv using d3.csv and then make visualizations
+// Load data from dataset/videogames_long.csv using d3.csv and then make visualizations
 console.log("vis.js loaded");
 async function fetchData() {
-  // autoType converts year/global_sales/sales_amount to numbers
+  
   return await d3.csv("./dataset/videogames_long.csv", d3.autoType);
 }
 
 fetchData().then(async (data) => {
-  // ---- helpers: top platforms/genres by total global sales ----
+
   const platformTotals = d3
     .rollups(
       data,
@@ -35,9 +35,9 @@ fetchData().then(async (data) => {
   );
   const dataTop5Platforms = data.filter((d) => top5Platforms.has(d.platform));
 
-  // -----------------------------
+
   // 1A: Which platforms have the highest total global sales?
-  // -----------------------------
+  
   const spec1a = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: "1A — Total Global Sales by Platform (Top 10)",
@@ -70,10 +70,10 @@ fetchData().then(async (data) => {
     height: 350,
   };
 
-  // -----------------------------
+ 
   // 1B: For top platforms, which genres drive global sales?
   // Heatmap
-  // -----------------------------
+  
   const spec1b = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: "1B — Global Sales by Platform and Genre (Top 10 × Top 10)",
@@ -103,9 +103,9 @@ fetchData().then(async (data) => {
     height: 350,
   };
 
-  // -----------------------------
+  
   // 2A: How do total global sales change over time overall?
-  // -----------------------------
+  
   const spec2a = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: "2A — Total Global Sales Over Time",
@@ -133,9 +133,9 @@ fetchData().then(async (data) => {
     height: 350,
   };
 
-  // -----------------------------
+ 
   // 2B: How do sales over time differ by platform (top 5)?
-  // -----------------------------
+ 
   const spec2b = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: "2B — Global Sales Over Time by Platform (Top 5)",
@@ -165,10 +165,10 @@ fetchData().then(async (data) => {
     height: 350,
   };
 
-  // -----------------------------
+  
   // 3A: How do regional sales compare across platforms? (stacked)
-  // Use sales_amount + sales_region
-  // -----------------------------
+  
+ 
   const spec3a = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: "3A — Regional Sales by Platform (Top 10 Platforms)",
@@ -198,10 +198,10 @@ fetchData().then(async (data) => {
     height: 350,
   };
 
-  // -----------------------------
+  
   // 3B: NA vs JP — which platforms are most popular?
-  // Facet by region (na_sales vs jp_sales)
-  // -----------------------------
+ 
+  
   const spec3b = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: "3B — Platform Popularity: North America vs Japan (Top 10 Platforms)",
@@ -235,9 +235,9 @@ fetchData().then(async (data) => {
     height: 350,
   };
 
-  // -----------------------------
-  // 4A: Story — Genre preferences: NA vs JP
-  // -----------------------------
+ 
+  // 4A: Genre preferences: NA vs JP
+ 
   const spec4a = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: "4A — Visual Story: Genre Sales in North America vs Japan",
@@ -271,10 +271,10 @@ fetchData().then(async (data) => {
     height: 350,
   };
 
-  // -----------------------------
-  // 4B: Story — Compare genre strength JP vs NA (scatter by genre)
-  // Build aggregated table: one row per genre with NA_sum and JP_sum
-  // -----------------------------
+  
+  // 4B: Compare genre strength JP vs NA (scatter by genre)
+  
+ 
   const genreAgg = d3.rollups(
     data.filter((d) => d.sales_region === "na_sales" || d.sales_region === "jp_sales"),
     (v) => ({
