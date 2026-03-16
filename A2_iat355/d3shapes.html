@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kuan | D3 Shapes</title>
+  <meta
+    name="description"
+    content="Interactive D3 shape IAT355 ."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .viz-wrap {
+      padding: 2rem 0;
+    }
+
+    .viz-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .viz-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .viz-canvas {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hint {
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <p class="site-title">D3 Shapes</p>
+        <p class="site-subtitle">IAT355 Short Assignment</p>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="visualizations.html">Visualizations</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn" id="themeBtn" type="button" aria-pressed="false">
+        Toggle theme
+      </button>
+    </div>
+  </header>
+
+  <main class="section container viz-wrap">
+    <h1>Click to Add Shapes</h1>
+    <p class="muted">
+      The first two clicks add circles. After that, each click adds an
+      n-sided regular polygon. Maximum: 20 shapes.
+    </p>
+
+    <div class="viz-card">
+      <div class="viz-meta">
+        <p class="muted small">Click anywhere inside the canvas.</p>
+        <p class="muted small" id="shapeCount">Shapes: 0 / 20</p>
+      </div>
+
+      <svg
+        id="shapeCanvas"
+        class="viz-canvas"
+        viewBox="0 0 900 560"
+        role="img"
+        aria-label="Interactive D3 shape canvas"
+      ></svg>
+
+      <p class="muted small hint">
+        Shapes animate in with scale and rotation, and each one gets a different color.
+      </p>
+    </div>
+  </main>
+
+  <script defer src="main.js"></script>
+  <script type="module" src="d3shapes.js"></script>
+</body>
+</html>
